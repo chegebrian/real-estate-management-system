@@ -3,7 +3,7 @@ import { useProperty } from "../../contexts/PropertyContext";
 import AgentCard from "./AgentCard";
 
 function AgentList() {
-  const { agents } = useProperty();
+  const { agents, agentUrl, addNewAgent } = useProperty();
   const [fName, setFname] = useState("");
   const [lName, setLname] = useState("");
   const [email, setEmail] = useState("");
@@ -26,8 +26,28 @@ function AgentList() {
     setImage(e.target.value);
   }
   console.log(agents);
+
+  let newAgent = {
+    firstName: fName,
+    lastName: lName,
+    email: email,
+    phone: tel,
+    profileImage: image,
+  };
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newAgent),
+  };
   function handleAddAgent(e) {
     e.preventDefault();
+    fetch(agentUrl, options)
+      .then((res) => res.json())
+      .then((data) => addNewAgent(data))
+      .catch((err) => console.error(err));
   }
 
   return (
@@ -42,6 +62,7 @@ function AgentList() {
             id="fName"
             value={fName}
             onChange={handleChangeFname}
+            required
           />
         </div>
         <div>
@@ -52,6 +73,7 @@ function AgentList() {
             id="lName"
             value={lName}
             onChange={handleChangeLname}
+            required
           />
         </div>
         <div>
@@ -62,6 +84,7 @@ function AgentList() {
             id="email"
             value={email}
             onChange={handleChangeEmail}
+            required
           />
         </div>
         <div>
@@ -72,17 +95,18 @@ function AgentList() {
             id="tel"
             value={tel}
             onChange={handleChangeTel}
+            required
           />
         </div>
         <div>
           <label htmlFor="image">Image:</label>
           <input
-            type="image"
-            src=""
-            alt=""
+            type="text"
+            name="image"
             id="image"
             value={image}
             onChange={handleChangeImage}
+            required
           />
         </div>
         <button type="submit" className="cursor-pointer">

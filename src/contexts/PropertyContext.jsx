@@ -33,8 +33,14 @@ function PropertContext({ children }) {
     }
     fetchData();
   }, []);
+
+  function addNewAgent(newAgent) {
+    setAgents([...agents, newAgent]);
+  }
   return (
-    <property.Provider value={{ agents, properties, tenants }}>
+    <property.Provider
+      value={{ agents, properties, tenants, agentUrl, addNewAgent }}
+    >
       {children}
     </property.Provider>
   );
