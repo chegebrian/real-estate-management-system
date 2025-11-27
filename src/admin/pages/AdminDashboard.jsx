@@ -7,9 +7,9 @@ function AdminDashboard() {
   return (
     <div>
       <AgentList />
-      <h2>Tenants</h2>
-      <TenantList />
-      <h2>Properties</h2>
+      {/* <h2>Tenants</h2> */}
+      {/* <TenantList />
+      <h2>Properties</h2> */}
       <PropertyList />
     </div>
   );

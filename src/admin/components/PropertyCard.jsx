@@ -1,16 +1,18 @@
 import React from "react";
 
-function AgentCard({ fName, lName, email, image }) {
+function PropertyCard({ name, location, units, price, image }) {
   return (
     <div className="p-4 rounded-md shadow-md flex gap-4 flex-col">
       <div className="w-full rounded-md">
-        <img src={image} alt={lName} className="w-full rounded-md" />
+        <img src={image} alt={name} className="w-full rounded-md" />
       </div>
       <div className="flex gap-4 flex-col">
-        <h3>
-          {fName} {lName}
-        </h3>
-        <p>{email}</p>
+        <h3>{name}</h3>
+        <p>{location}</p>
+        <p className="flex justify-between gap-4 items-center">
+          <span>Units:{units}</span>
+          <span>Ksh {price}</span>
+        </p>
         <div className="flex gap-4">
           <button className="rounded-md bg-amber-400 px-4 py-2">Edit</button>
           <button className="rounded-md bg-green-600 px-4 py-2">View</button>
@@ -21,4 +23,4 @@ function AgentCard({ fName, lName, email, image }) {
   );
 }
 
-export default AgentCard;
+export default PropertyCard;

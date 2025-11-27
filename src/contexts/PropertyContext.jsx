@@ -37,9 +37,19 @@ function PropertContext({ children }) {
   function addNewAgent(newAgent) {
     setAgents([...agents, newAgent]);
   }
+  function addNewProperty(newProperty) {
+    setProperties([...properties, newProperty]);
+  }
   return (
     <property.Provider
-      value={{ agents, properties, tenants, agentUrl, addNewAgent }}
+      value={{
+        agents,
+        properties,
+        tenants,
+        agentUrl,
+        addNewAgent,
+        addNewProperty,
+      }}
     >
       {children}
     </property.Provider>
