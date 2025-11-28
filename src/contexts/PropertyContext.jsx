@@ -40,6 +40,9 @@ function PropertContext({ children }) {
   function addNewProperty(newProperty) {
     setProperties([...properties, newProperty]);
   }
+  function addNewTenant(newTenant) {
+    setProperties([...tenants, newTenant]);
+  }
 
   const availableProperties = properties?.map((property) => property.name);
   return (
@@ -53,6 +56,8 @@ function PropertContext({ children }) {
         addNewProperty,
         propertyUrl,
         availableProperties,
+        tenantUrl,
+        addNewTenant,
       }}
     >
       {children}
