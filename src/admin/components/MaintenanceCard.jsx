@@ -1,6 +1,6 @@
 import React from "react";
 
-function MaintenanceCard({ name, property, date, issue, unit }) {
+function MaintenanceCard({ name, property, date, issue, unit, status }) {
   return (
     <div className="border p-4 rounded shadow">
       <h2 className="font-bold text-lg mb-2">{name}</h2>

@@ -1,7 +1,8 @@
 import React from "react";
+import MaintenanceCard from "./MaintenanceCard";
 
 function Maintenance() {
-  const initialRequests = [
+  const requests = [
     {
       id: 1,
       name: "milly",
@@ -30,7 +31,24 @@ function Maintenance() {
       date: "2024-01-20",
     },
   ];
-  return <h2 className="text-lg font-bold mb-8">Maintenance Request</h2>;
+  return (
+    <>
+      <h2 className="text-lg font-bold mb-8">Maintenance Request</h2>
+      <div className="grid grid-cols-3 gap-4">
+        {requests?.map((request) => (
+          <MaintenanceCard
+            key={request.id}
+            name={request.name}
+            property={request.property}
+            unit={request.unit}
+            date={request.date}
+            issue={request.issue}
+            status={request.status}
+          />
+        ))}
+      </div>
+    </>
+  );
 }
 
 export default Maintenance;
