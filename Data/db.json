@@ -433,7 +433,7 @@
       "unit": "d1"
     }
   ],
-  "requests": [
+  "maintenanceRequests": [
     {
       "id": 1,
       "name": "milly",

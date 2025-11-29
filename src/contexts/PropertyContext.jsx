@@ -4,11 +4,13 @@ const property = createContext();
 const agentUrl = "http://localhost:7000/agents";
 const propertyUrl = "http://localhost:7000/propertyList";
 const tenantUrl = "http://localhost:7000/tenants";
+const maintenanceRequestUrl = "http://localhost:7000/maintenanceRequests";
 
 function PropertContext({ children }) {
   const [agents, setAgents] = useState([]);
   const [properties, setProperties] = useState([]);
   const [tenants, setTenants] = useState([]);
+  const [maintenanceRequests, setMaintenanceRequests] = useState([]);
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(agentUrl);
@@ -33,6 +35,14 @@ function PropertContext({ children }) {
     }
     fetchData();
   }, []);
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(maintenanceRequestUrl);
+      const data = await response.json();
+      setMaintenanceRequests(data);
+    }
+    fetchData();
+  }, []);
 
   function addNewAgent(newAgent) {
     setAgents([...agents, newAgent]);
@@ -54,7 +64,7 @@ function PropertContext({ children }) {
         addNewAgent,
         addNewProperty,
         propertyUrl,
-
+        maintenanceRequests,
         tenantUrl,
         addNewTenant,
       }}
