@@ -11,6 +11,9 @@ import Tenants from "./agent/components/Tenants";
 import AgentDashboard from "./agent/pages/AgentDashboard";
 import AssignedProperties from "./agent/components/AssignedProperties";
 import TenantDashboard from "./tenant/pages/TenantDashboard";
+import MaintenanceRequest from "./tenant/components/MaintenanceRequest";
+import Profile from "./tenant/components/Profile";
+import Rent from "./tenant/components/Rent";
 
 function App() {
   return (
@@ -43,12 +46,12 @@ function App() {
             />
           </Route>
           <Route path="/TenantDashboard" element={<TenantDashboard />}>
-            <Route path="/TenantDashboard/Payments" element={<Payment />} />
+            <Route path="/TenantDashboard/Payments" element={<Rent />} />
             <Route
               path="/TenantDashboard/Maintenance"
-              element={<Maintenance />}
+              element={<MaintenanceRequest />}
             />
-            <Route path="/TenantDashboard/Profile" element={<Tenants />} />
+            <Route path="/TenantDashboard/Profile" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>
