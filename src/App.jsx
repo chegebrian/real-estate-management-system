@@ -4,9 +4,12 @@ import AdminDashboard from "./admin/pages/AdminDashboard";
 import Login from "./Login";
 import AgentList from "./admin/components/AgentList";
 import PropertyList from "./admin/components/PropertyList";
-import Tenants from "./Tenants";
+
 import Payment from "./admin/components/Payment";
 import Maintenance from "./admin/components/Maintenance";
+import Tenants from "./agent/components/Tenants";
+import AgentDashboard from "./agent/pages/AgentDashboard";
+import AssignedProperties from "./agent/components/AssignedProperties";
 
 function App() {
   return (
@@ -20,9 +23,23 @@ function App() {
               path="/AdminDashboard/Properties"
               element={<PropertyList />}
             />
-            <Route path="/AdminDashboard/Tenants" element={<Tenants />} />
             <Route path="/AdminDashboard/Payments" element={<Payment />} />
-            <Route path="/AdminDashboard/Maintenance" element={<Maintenance />} />
+            <Route
+              path="/AdminDashboard/Maintenance"
+              element={<Maintenance />}
+            />
+          </Route>
+          <Route path="/AgentDashboard" element={<AgentDashboard />}>
+            <Route
+              path="/AgentDashboard/Properties"
+              element={<AssignedProperties />}
+            />
+            <Route path="/AgentDashboard/Tenants" element={<Tenants />} />
+            <Route path="/AgentDashboard/Payments" element={<Payment />} />
+            <Route
+              path="/AgentDashboard/Maintenance"
+              element={<Maintenance />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

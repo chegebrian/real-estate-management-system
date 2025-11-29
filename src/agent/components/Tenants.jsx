@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useProperty } from "./contexts/PropertyContext";
+import { useProperty } from "../../contexts/PropertyContext";
 import TenantCard from "./TenantCard";
 
 function Tenants() {

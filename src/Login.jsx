@@ -5,7 +5,8 @@ function Login() {
   const navigate = useNavigate();
   function handleSubmit(e) {
     e.preventDefault();
-    navigate("/AdminDashboard");
+    // navigate("/AdminDashboard");
+    navigate("/AgentDashboard");
   }
   return (
     <form onSubmit={handleSubmit}>

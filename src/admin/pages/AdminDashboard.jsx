@@ -9,9 +9,6 @@ function AdminDashboard() {
             <NavLink to="/AdminDashboard/Agents">Agents</NavLink>
           </li>
           <li>
-            <NavLink to="/AdminDashboard/Tenants">Tenants</NavLink>
-          </li>
-          <li>
             <NavLink to="/AdminDashboard/Properties">Properties</NavLink>
           </li>
           <li>
