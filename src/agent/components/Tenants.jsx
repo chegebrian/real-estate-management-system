@@ -12,6 +12,7 @@ function Tenants() {
   const [image, setImage] = useState("");
   const [property, setProperty] = useState("");
   const [unit, setUnit] = useState("");
+  const [query, setQuery] = useState("");
 
   const availableProperties = [...new Set(properties?.map((p) => p.name))];
   console.log(availableProperties);
@@ -50,6 +51,12 @@ function Tenants() {
       })
       .catch(console.error);
   }
+
+  const filteredTenants = tenants?.filter(
+    (agent) =>
+      agent.firstName.toLowerCase().includes(query?.toLowerCase()) ||
+      agent.lastName.toLowerCase().includes(query?.toLowerCase())
+  );
 
   return (
     <div>
@@ -160,9 +167,19 @@ function Tenants() {
           Add Tenant
         </button>
       </form>
-
+      <form className="mt-8">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search by name"
+          className="w-full px-4 py-2 outline"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </form>
       <div className="grid grid-cols-3 gap-4 mt-8">
-        {tenants?.map((tenant) => (
+        {filteredTenants?.map((tenant) => (
           <TenantCard
             fName={tenant.firstName}
             lName={tenant.lastName}
