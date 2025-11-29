@@ -48,7 +48,7 @@ function App() {
           </Route>
           {/* tenant routes */}
           <Route path="/TenantDashboard" element={<TenantDashboard />}>
-            <Route path="/TenantDashboard/Payment" element={<Rent />} />
+            <Route path="/TenantDashboard/Payments" element={<Rent />} />
             <Route
               path="/TenantDashboard/Maintenance"
               element={<MaintenanceRequest />}

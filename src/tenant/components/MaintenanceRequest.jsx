@@ -14,6 +14,7 @@ function MaintenanceRequest() {
   const [property, setProperty] = useState("");
   const [unit, setUnit] = useState("");
   const [issue, setIssue] = useState("");
+  const [query, setQuery] = useState("");
 
   function handleMaintenanceRequest(e) {
     e.preventDefault();
@@ -39,6 +40,10 @@ function MaintenanceRequest() {
       .catch((err) => console.error(err));
   }
   const availableProperties = [...new Set(properties?.map((p) => p.name))];
+
+  const filteredRequest = maintenanceRequests?.filter((property) =>
+    property.issue.toLowerCase().includes(query?.toLowerCase())
+  );
   return (
     <div>
       <h2 className="text-lg font-bold mb-8">Maintenance Requests</h2>
@@ -110,8 +115,19 @@ function MaintenanceRequest() {
           Add Maintenance Request
         </button>
       </form>
+      <form className="mt-8">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search by issue"
+          className="w-full px-4 py-2 outline"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </form>
       <div className="grid grid-cols-3 gap-4 mt-8">
-        {maintenanceRequests?.map((request) => (
+        {filteredRequest?.map((request) => (
           <MaintenanceRequestCard
             key={request.id}
             name={request.name}

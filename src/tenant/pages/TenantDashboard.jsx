@@ -10,7 +10,7 @@ function TenantDashboard() {
             <NavLink to="/TenantDashboard/Tenants"></NavLink>
           </li> */}
           <li>
-            <NavLink to="/TenantDashboard/Payment">Payment</NavLink>
+            <NavLink to="/TenantDashboard/Payments">Payment</NavLink>
           </li>
           <li>
             <NavLink to="/TenantDashboard/Maintenance">Maintenance</NavLink>
