@@ -4,7 +4,6 @@ import AdminDashboard from "./admin/pages/AdminDashboard";
 import Login from "./Login";
 import AgentList from "./admin/components/AgentList";
 import PropertyList from "./admin/components/PropertyList";
-
 import Payment from "./admin/components/Payment";
 import Maintenance from "./admin/components/Maintenance";
 import Tenants from "./agent/components/Tenants";
@@ -49,7 +48,7 @@ function App() {
           </Route>
           {/* tenant routes */}
           <Route path="/TenantDashboard" element={<TenantDashboard />}>
-            <Route path="/TenantDashboard/Payments" element={<Rent />} />
+            <Route path="/TenantDashboard/Payment" element={<Rent />} />
             <Route
               path="/TenantDashboard/Maintenance"
               element={<MaintenanceRequest />}
