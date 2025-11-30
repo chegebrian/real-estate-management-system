@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import SignUp from "./SignUp";
 import AdminDashboard from "./admin/pages/AdminDashboard";
 import Login from "./Login";
@@ -13,15 +13,37 @@ import TenantDashboard from "./tenant/pages/TenantDashboard";
 import MaintenanceRequest from "./tenant/components/MaintenanceRequest";
 import Profile from "./tenant/components/Profile";
 import Rent from "./tenant/components/Rent";
+import { useState } from "react";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  function handleLoggedInUser(loggedUser) {
+    setUser(loggedUser);
+  }
+
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+          {/* LOGIN ROUTE */}
+          <Route
+            path="/"
+            element={
+              user ? (
+                <Navigate to={`/${user.role}Dashboard`} />
+              ) : (
+                <Login onLogin={handleLoggedInUser} />
+              )
+            }
+          />
           {/* admin routes */}
-          <Route path="/AdminDashboard" element={<AdminDashboard />}>
+          <Route
+            path="/AdminDashboard"
+            element={
+              user?.role === "admin" ? <AdminDashboard /> : <Navigate to="/" />
+            }
+          >
             <Route path="/AdminDashboard/Agents" element={<AgentList />} />
             <Route
               path="/AdminDashboard/Properties"
@@ -34,7 +56,12 @@ function App() {
             />
           </Route>
           {/* agent routes */}
-          <Route path="/AgentDashboard" element={<AgentDashboard />}>
+          <Route
+            path="/AgentDashboard"
+            element={
+              user?.role === "agent" ? <AgentDashboard /> : <Navigate to="/" />
+            }
+          >
             <Route
               path="/AgentDashboard/Properties"
               element={<AssignedProperties />}
@@ -47,7 +74,16 @@ function App() {
             />
           </Route>
           {/* tenant routes */}
-          <Route path="/TenantDashboard" element={<TenantDashboard />}>
+          <Route
+            path="/TenantDashboard"
+            element={
+              user?.role === "tenant" ? (
+                <TenantDashboard />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          >
             <Route path="/TenantDashboard/Payments" element={<Rent />} />
             <Route
               path="/TenantDashboard/Maintenance"
