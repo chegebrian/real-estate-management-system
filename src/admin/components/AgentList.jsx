@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useProperty } from "../../contexts/PropertyContext";
 import AgentCard from "./AgentCard";
+import EditAgentModal from "./EditAgentModal";
 
 function AgentList() {
   const { agents, agentUrl, addNewAgent, handleDelete } = useProperty();
@@ -10,6 +11,7 @@ function AgentList() {
   const [tel, setTel] = useState("");
   const [image, setImage] = useState("");
   const [query, setQuery] = useState("");
+  const [editAgent, setEditAgent] = useState(null);
 
   function handleChangeFname(e) {
     setFname(e.target.value);
@@ -27,6 +29,14 @@ function AgentList() {
     setImage(e.target.value);
   }
   console.log(agents);
+
+  function handleEdit(currAgent) {
+    setEditAgent(currAgent);
+  }
+
+  function handleCloseModal() {
+    setEditAgent(null);
+  }
 
   let newAgent = {
     firstName: fName,
@@ -153,9 +163,13 @@ function AgentList() {
             image={agent.profileImage}
             id={agent.id}
             onDelete={handleDelete}
+            onEdit={() => handleEdit(agent)}
           />
         ))}
       </div>
+      {editAgent && (
+        <EditAgentModal agent={editAgent} onClose={handleCloseModal} />
+      )}
     </div>
   );
 }

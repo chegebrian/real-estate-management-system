@@ -62,7 +62,9 @@ function PropertContext({ children }) {
     setMaintenanceRequests([...maintenanceRequests, newMaintenanceRequest]);
   }
   function handleDelete(id) {
-    setAgents((agents) => agents?.filter((agent) => agent.id !== id));
+    fetch(`${agentUrl}/${id}`, { method: "DELETE" }).then(() =>
+      setAgents((agents) => agents?.filter((agent) => agent.id !== id))
+    );
   }
 
   return (
@@ -81,6 +83,7 @@ function PropertContext({ children }) {
         maintenanceRequestUrl,
         addMaintenanceRequest,
         handleDelete,
+        setAgents,
       }}
     >
       {children}
