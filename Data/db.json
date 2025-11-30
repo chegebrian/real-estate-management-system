@@ -35,12 +35,21 @@
     {
       "id": "3",
       "agentId": 2,
-      "name": "Sunflower",
+      "name": "Sunflower Apartments",
       "location": "Ruiru",
       "image": "https://picsum.photos/seed/property1/600/400",
       "numOfUnits": "8",
       "price": "6000",
-      "units": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8"]
+      "units": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7",
+        "s8"
+      ]
     },
     {
       "id": "c2e0",
@@ -49,7 +58,13 @@
       "location": "uptown",
       "price": "15000",
       "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=60%22",
-      "units": ["d1", "d2", "d3", "d4", "d5"]
+      "units": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5"
+      ]
     },
     {
       "id": "83bb",
@@ -58,10 +73,12 @@
       "location": "Kayole",
       "price": "1500",
       "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=60%22",
-      "units": ["o1", "o2"]
+      "units": [
+        "o1",
+        "o2"
+      ]
     }
   ],
-
   "users": [
     {
       "id": "1",
@@ -82,7 +99,6 @@
       "role": "tenant"
     }
   ],
-
   "tenants": [
     {
       "id": "1",

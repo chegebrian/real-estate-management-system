@@ -48,9 +48,16 @@ responsive interface.
     ```
 
 5.  Start the API server
+
     ```bash
     npm run server
     ```
+
+6.  Login credentials
+
+    admin side : email:brian@gmail.com password:1234
+    agent side : email:milly@gmail.com password:2345
+    tenant side : email:derik@gmail.com password:3456
 
 ## Usage
 
