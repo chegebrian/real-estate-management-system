@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useProperty } from "../../contexts/PropertyContext";
 import PropertyCard from "./PropertyCard";
+import PropertyModal from "./PropertyModal";
 
 function PropertyList() {
   const { properties, propertyUrl, addNewProperty } = useProperty();
@@ -10,6 +11,15 @@ function PropertyList() {
   const [unit, setUnit] = useState("");
   const [image, setImage] = useState("");
   const [query, setQuery] = useState("");
+  const [editProperty, setEditProperty] = useState(null);
+
+  function handleEdit(currProperty) {
+    setEditProperty(currProperty);
+  }
+
+  function handleCloseModal() {
+    setEditProperty(null);
+  }
 
   function handlePropertyName(e) {
     setPropertyName(e.target.value);
@@ -150,9 +160,13 @@ function PropertyList() {
             units={property.numOfUnits}
             price={property.price}
             image={property.image}
+            onEdit={() => handleEdit(property)}
           />
         ))}
       </div>
+      {editProperty && (
+        <PropertyModal onClose={handleCloseModal} property={editProperty} />
+      )}
     </>
   );
 }

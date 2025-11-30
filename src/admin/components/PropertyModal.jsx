@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { useProperty } from "../../contexts/PropertyContext";
 
-function EditAgentModal({ agent, onClose }) {
-  const { agentUrl, setAgents } = useProperty();
-  const { id } = agent;
-  const [fName, setFName] = useState(agent.firstName);
-  const [lName, setLName] = useState(agent.lastName);
-  const [email, setEmail] = useState(agent.email);
+function PropertyModal({ property, onClose }) {
+  const { propertyUrl, setProperties } = useProperty();
+  const { id } = property;
+  const [name, setName] = useState(property.name);
+  const [location, setLocation] = useState(property.location);
+  const [price, setPrice] = useState(property.price);
 
   function handleSubmit(e) {
     e.preventDefault();
     const updatedAgent = {
-      firstName: fName,
-      lastName: lName,
-      email: email,
+      name: name,
+      location: location,
+      price: price,
     };
 
     const option = {
@@ -24,12 +24,12 @@ function EditAgentModal({ agent, onClose }) {
       body: JSON.stringify(updatedAgent),
     };
 
-    fetch(`${agentUrl}/${id}`, option)
+    fetch(`${propertyUrl}/${id}`, option)
       .then((res) => res.json())
       .then((data) =>
-        setAgents((agents) =>
-          agents?.map((agent) =>
-            agent.id === id ? { ...agent, ...data } : agent
+        setProperties((properties) =>
+          properties?.map((property) =>
+            property.id === id ? { ...property, ...data } : property
           )
         )
       );
@@ -44,23 +44,23 @@ function EditAgentModal({ agent, onClose }) {
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <input
             className="border rounded px-2 py-1"
-            value={fName}
-            onChange={(e) => setFName(e.target.value)}
-            placeholder="First Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Property Name"
           />
 
           <input
             className="border rounded px-2 py-1"
-            value={lName}
-            onChange={(e) => setLName(e.target.value)}
-            placeholder="Last Name"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Property Location"
           />
 
           <input
             className="border rounded px-2 py-1"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            placeholder="Price"
           />
 
           <div className="flex justify-between mt-4">
@@ -85,4 +85,4 @@ function EditAgentModal({ agent, onClose }) {
   );
 }
 
-export default EditAgentModal;
+export default PropertyModal;

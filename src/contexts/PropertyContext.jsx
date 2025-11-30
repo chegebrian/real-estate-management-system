@@ -66,12 +66,18 @@ function PropertContext({ children }) {
       setAgents((agents) => agents?.filter((agent) => agent.id !== id))
     );
   }
+  function handleDeleteProperty(id) {
+    fetch(`${agentUrl}/${id}`, { method: "DELETE" }).then(() =>
+      setAgents((agents) => agents?.filter((agent) => agent.id !== id))
+    );
+  }
 
   return (
     <property.Provider
       value={{
         agents,
         properties,
+        handleDeleteProperty,
         tenants,
         agentUrl,
         addNewAgent,
@@ -84,6 +90,7 @@ function PropertContext({ children }) {
         addMaintenanceRequest,
         handleDelete,
         setAgents,
+        setProperties,
       }}
     >
       {children}

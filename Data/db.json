@@ -24,19 +24,11 @@
     },
     {
       "id": "286b",
-      "firstName": "new",
-      "lastName": "agent",
+      "firstName": "Milly",
+      "lastName": "Ombaye",
       "email": "new@gmail.com",
       "phone": "0722",
       "profileImage": "https://randomuser.me/api/portraits/men/52.jpg"
-    },
-    {
-      "id": "ea92",
-      "firstName": "Miriam",
-      "lastName": "Njeri",
-      "email": "lily@gmail.com",
-      "phone": "lily@gmail.com",
-      "profileImage": "https://randomuser.me/api/portraits/women/65.jpg"
     }
   ],
   "propertyList": [
@@ -44,7 +36,7 @@
       "id": "1",
       "agentId": 2,
       "name": "Roses",
-      "location": "Kenol",
+      "location": "Juja",
       "image": "https://picsum.photos/seed/property3/600/400",
       "numOfUnits": "5",
       "price": "300",
@@ -54,7 +46,10 @@
         "r3",
         "r4",
         "r5"
-      ]
+      ],
+      "firstName": "Roses",
+      "lastName": "Sagana",
+      "email": "300"
     },
     {
       "id": "2",
